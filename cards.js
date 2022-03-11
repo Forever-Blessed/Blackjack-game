@@ -305,9 +305,6 @@ totalvalue = (totalvalue1+totalvalue2)
 console.log(totalvalue1 + "+" + totalvalue2 + "=" + totalvalue )
 
 
-  if (totalvalue === 21) {
-  alert("you got 21!")
-  }
   if (totalvalue >= 22) {
     alert("you Loose!")
   }
@@ -342,7 +339,6 @@ function cleartable () {
       document.getElementById("card4").style.display = "flex";
       document.querySelector("#showvalue").innerHTML = (totalvalue)
     }
-
     else if (totalvalue = (totalvalue1+totalvalue2)) {
     totalvalue = (totalvalue+totalvalue3);
     threecardvalue = totalvalue;
@@ -350,32 +346,34 @@ function cleartable () {
     document.getElementById("card3").style.display = "flex";
     document.querySelector("#showvalue").innerHTML = (totalvalue)
     }
-
     if (totalvalue >= 22) {
       alert("you Loose!")
       document.getElementById("hit").style.display = "none";
     }
-    
     return totalvalue
   }
 
   function stick () {
     var dealerscore = Math.floor(Math.random() * 21)
     if (dealerscore === 1,2,3,4,5,6,7,8) {dealerscore = (dealerscore*2)}
-    if (dealerscore === 9,10,12,14) {dealerscore = (dealerscore*1.5)}
-    if (dealerscore === 11) {dealerscore = (dealerscore + 7)}
-    if (totalvalue >= dealerscore) {
+    else if (dealerscore === 9,10,12,14) {dealerscore = (dealerscore*1.5)}
+    else if (dealerscore === 11) {dealerscore = (dealerscore + 7)}
+    
+    if (totalvalue < 21) {alert('Bust!')}
+    else if (!(dealerscore < 21)) {
+      alert('Dealer is bust you win!' + dealerscore);
+    }
+    else if (totalvalue < 21) {alert('Bust!')}
+    if (totalvalue > dealerscore) {
       alert("you got " + totalvalue + "! Dealer got: " + dealerscore + " you win :)")
       }
-    else if (totalvalue <= dealerscore) {
-        alert("you got " + totalvalue + "! dealer got: " + dealerscore + " dealer wins :(")
-        }
     else if (totalvalue === dealerscore) {
-        alert("Draw!")
+      alert("Draw!")
     }
-
-  
-  }
+    else if (totalvalue < dealerscore) {
+      alert("you got " + totalvalue + "! Dealer got: " + dealerscore + " you loose :(")
+      }
+}
 
 
 
