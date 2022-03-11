@@ -367,20 +367,14 @@ function cleartable () {
     else if (totalvalue <= dealerscore) {
         alert("you got " + totalvalue + "! dealer got: " + dealerscore + " dealer wins :(")
         }
-      
+    else if (totalvalue === dealerscore) {
+        alert("Draw!")
+    }
 
   
   }
 
-  if (totalvalue) {
-    document.querySelector("#showvalue").innerHTML = (totalvalue)
-  }
-  if (totalvalue >= 22) {
-    alert("you Loose!")
-  }
-  if (totalvalue === 21) {
-    alert("you got 21!")
-    }
+
 
 document.getElementById("shufbut").addEventListener("click", startgame);
 document.getElementById("shufbut").addEventListener("click", cleartable);
