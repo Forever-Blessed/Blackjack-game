@@ -4,6 +4,9 @@ var totalvalue2;
 var totalvalue3;
 var totalvalue4;
 var totalvalue5;
+let threecardvalue;
+let fourcardvalue;
+let fivecardvalue;
 // this is a function to create the deck 
 function createDeck() {
   let cardsuits = ['H','C','D','S'];
@@ -36,6 +39,7 @@ function shuffleFunc (deck) {
     deck[randomIndex] = tempCard;
   }
 }
+
 
 //let gameDeck = createDeck();
 function startgame() {
@@ -91,7 +95,7 @@ function startgame() {
       }
 //=====================================================
    // THIS IF STATEMENT IS FOR THE IMAGE ON CARD 3
-   if (card3value[0] === "C") {
+if (card3value[0] === "C") {
     document.querySelector("#img3").src = "clubs.png"
   }
     else if (card3value[0] === "D") {
@@ -107,7 +111,7 @@ function startgame() {
     }
 //=====================================================
    // THIS IF STATEMENT IS FOR THE IMAGE ON CARD 4
-   if (card4value[0] === "C") {
+if (card4value[0] === "C") {
     document.querySelector("#img4").src = "clubs.png"
   }
     else if (card4value[0] === "D") {
@@ -123,7 +127,7 @@ function startgame() {
     }
 //=====================================================
    // THIS IF STATEMENT IS FOR THE IMAGE ON CARD 5
-   if (card5value[0] === "C") {
+if (card5value[0] === "C") {
     document.querySelector("#img5").src = "clubs.png"
   }
     else if (card5value[0] === "D") {
@@ -146,17 +150,16 @@ if (card2value[1] === "1") {
   document.querySelector("#topnumbercard2").innerHTML = ("10")
 }
 if (card3value[1] === "1") {
-  document.querySelector("#topnumbercard1").innerHTML = ("10")
+  document.querySelector("#topnumbercard3").innerHTML = ("10")
 }
 if (card4value[1] === "1") {
-  document.querySelector("#topnumbercard1").innerHTML = ("10")
+  document.querySelector("#topnumbercard4").innerHTML = ("10")
 }
 if (card5value[1] === "1") {
-  document.querySelector("#topnumbercard1").innerHTML = ("10")
+  document.querySelector("#topnumbercard5").innerHTML = ("10")
 }
 // This is for working out the "value" of card 1.
 //=================================
-let totalvalue1 
 if (card1value[1] === "A") {
 totalvalue1 = 11;}
 else if (card1value[1] === "K") {
@@ -187,27 +190,26 @@ else if (card1value[1] === "2") {
 
 //This is for working out the value of card 2
 
-let totalvalue2
 if (card2value[1] === "A") {
   totalvalue2 = 11;}
   else if (card2value[1] === "K") {
-    totalvalue2 = 10;}
+            totalvalue2 = 10;}
   else if (card2value[1] === "Q") {
-      totalvalue2 = 10;}
+            totalvalue2 = 10;}
   else if (card2value[1] === "J") {
-      totalvalue2 = 10;}
+            totalvalue2 = 10;}
   else if (card2value[1] === "1") {
-      totalvalue2 = 10;}
+            totalvalue2 = 10;}
   else if (card2value[1] === "9") {
-      totalvalue2 = 9;}
+            totalvalue2 = 9;}
   else if (card2value[1] === "8") {
-      totalvalue2 = 8;}
+            totalvalue2 = 8;}
   else if (card2value[1] === "7") {
-      totalvalue2 = 7;}
+            totalvalue2 = 7;}
   else if (card2value[1] === "6") {
-      totalvalue2 = 6;}
+            totalvalue2 = 6;}
   else if (card2value[1] === "5") {
-      totalvalue2 = 5;}
+            totalvalue2 = 5;}
   else if (card2value[1] === "4") {
       totalvalue2 = 4;}
   else if (card2value[1] === "3") {
@@ -215,8 +217,7 @@ if (card2value[1] === "A") {
   else if (card2value[1] === "2") {
       totalvalue2 = 2;}
 //==============================================
-// card 3 
-let totalvalue3 
+// card 3  
 if (card3value[1] === "A") {
 totalvalue3 = 11;}
 else if (card3value[1] === "K") {
@@ -245,7 +246,6 @@ else if (card3value[1] === "2") {
     totalvalue3 = 2;}
 //=====================================================
 //card 4 
-let totalvalue4 
 if (card4value[1] === "A") {
 totalvalue4 = 11;}
 else if (card4value[1] === "K") {
@@ -274,7 +274,6 @@ else if (card4value[1] === "2") {
     totalvalue4 = 2;}
 //========================================================
 //card 5 
-let totalvalue5 
 if (card5value[1] === "A") {
 totalvalue5 = 11;}
 else if (card5value[1] === "K") {
@@ -302,43 +301,103 @@ else if (card5value[1] === "3") {
 else if (card5value[1] === "2") {
     totalvalue5 = 2;}
     
-let totalvalue = (totalvalue1+totalvalue2)
-
-
-
-    // Here as an example of much more elegant If statement using truthy falsy 
-    if (totalvalue2) {
-      document.querySelector("#showvalue").innerHTML = (totalvalue)
-    }
-    if (totalvalue === 21) {
-      alert("you got 21!")
-    }
-}
     
+totalvalue = (totalvalue1+totalvalue2)
+console.log(totalvalue1 + "+" + totalvalue2 + "=" + totalvalue )
 
-startgame();
 
-function hit() {
-  totalvalue = totalvalue1+totalvalue2+totalvalue3;
-  console.log("Hit")
-  document.getElementById("card3").style.display = "flex";
-
-  if (document.getElementById("card3").style.display = "flex") {
-    if (document.getElementById("hit").addEventListener("click", hit))
-    document.getElementById("card4").style.display = "flex";
+  if (totalvalue === 21) {
+  alert("you got 21!")
+  }
+  if (totalvalue >= 22) {
+    alert("you Loose!")
+  }
+      // Here as an example of much more elegant If statement using truthy falsy 
+  if (totalvalue) {
+    document.querySelector("#showvalue").innerHTML = (totalvalue)
   }
 }
 
+function cleartable () {
+  document.getElementById("card3").style.display = "none";
+  document.getElementById("card4").style.display = "none";
+  document.getElementById("card5").style.display = "none";
+}
 
+  startgame();
 
-// The almighty shuffle/startgame button
+  function hit () {
+    if (totalvalue = fourcardvalue) {
+      totalvalue = (totalvalue+totalvalue5);
+      fivecardvalue = totalvalue;
+      console.log("you now have " + totalvalue)
+      document.getElementById("card5").style.display = "flex";
+      document.querySelector("#showvalue").innerHTML = (totalvalue)
+    }
+    //console.log("Hit"+ "+" + totalvalue3)
+    else if (totalvalue = threecardvalue) {
+      totalvalue = (totalvalue+totalvalue4);
+      fourcardvalue = totalvalue;
+      console.log("you now have " + totalvalue)
+      document.getElementById("card4").style.display = "flex";
+      document.querySelector("#showvalue").innerHTML = (totalvalue)
+    }
+
+    else if (totalvalue = (totalvalue1+totalvalue2)) {
+    totalvalue = (totalvalue+totalvalue3);
+    threecardvalue = totalvalue;
+    console.log("you now have " + totalvalue)
+    document.getElementById("card3").style.display = "flex";
+    document.querySelector("#showvalue").innerHTML = (totalvalue)
+    }
+
+    if (totalvalue >= 22) {
+      alert("you Loose!")
+      document.getElementById("hit").style.display = "none";
+    }
+    
+    return totalvalue
+  }
+
+  function stick () {
+    var dealerscore = Math.floor(Math.random() * 21)
+    if (totalvalue >= dealerscore) {
+      alert("you got " + totalvalue + "! Dealer got: " + dealerscore + " you win :)")
+      }
+    else if (totalvalue <= dealerscore) {
+        alert("you got " + totalvalue + "! dealer got: " + dealerscore + " dealer wins :(")
+        }
+      
+
+  
+  }
+
+  if (totalvalue) {
+    document.querySelector("#showvalue").innerHTML = (totalvalue)
+  }
+  if (totalvalue >= 22) {
+    alert("you Loose!")
+  }
+  if (totalvalue === 21) {
+    alert("you got 21!")
+    }
 
 document.getElementById("shufbut").addEventListener("click", startgame);
+document.getElementById("shufbut").addEventListener("click", cleartable);
 document.getElementById("hit").addEventListener("click", hit);
+document.getElementById("stick").addEventListener("click", stick);
 
-// now i want to0 
-//console.log("card 1 is a " + card1value + "");
-//console.log("card 2 is a " + card2value + "");
+
+
+  
+  
+  
+  
+  
+  // if (document.getElementById("card3").style.display = "flex") {
+  // if (document.getElementById("hit").addEventListener("click", hit))
+  // document.getElementById("card4").style.display = "flex";
+  
 
 // these give me the value of the next cards 
 //var twist = gameDeck.splice(0,1);
