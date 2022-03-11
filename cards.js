@@ -322,6 +322,7 @@ function cleartable () {
   document.getElementById("card3").style.display = "none";
   document.getElementById("card4").style.display = "none";
   document.getElementById("card5").style.display = "none";
+  document.getElementById("hit").style.display = "flex";
 }
 
   startgame();
