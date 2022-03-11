@@ -146,6 +146,10 @@ button:hover {
   background-color: rgb(45, 248, 45);
 }
 
+.buttonss {
+  display: flex;
+}
+
 #but1:hover {
   box-shadow: rgb(1, 255, 35) 0px 14px 28px, rgb(54, 248, 5) 0px 10px 10px;
 }

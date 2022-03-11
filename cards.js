@@ -43,7 +43,6 @@ function shuffleFunc (deck) {
 
 //let gameDeck = createDeck();
 function startgame() {
-  document.getElementById("card3").style.display = "none";
   var gameDeck = createDeck();
   shuffleFunc(gameDeck);
   console.log(gameDeck);
@@ -322,7 +321,7 @@ function cleartable () {
   document.getElementById("card3").style.display = "none";
   document.getElementById("card4").style.display = "none";
   document.getElementById("card5").style.display = "none";
-  document.getElementById("hit").style.display = "flex";
+  document.getElementById("hit").style.display = "block";
 }
 
   startgame();
