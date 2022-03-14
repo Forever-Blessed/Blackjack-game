@@ -4,9 +4,15 @@ var totalvalue2;
 var totalvalue3;
 var totalvalue4;
 var totalvalue5;
+let twocardvalue;
 let threecardvalue;
 let fourcardvalue;
 let fivecardvalue;
+var hitexecuted;
+var oneexecuted = false;
+var twoexecuted = false;
+var threeexecuted = false;
+let playerlost = false;
 // this is a function to create the deck 
 function createDeck() {
   let cardsuits = ['H','C','D','S'];
@@ -302,6 +308,7 @@ else if (card5value[1] === "2") {
     
     
 totalvalue = (totalvalue1+totalvalue2)
+twocardvalue = (totalvalue)
 console.log(totalvalue1 + "+" + totalvalue2 + "=" + totalvalue )
 
 
@@ -312,6 +319,7 @@ console.log(totalvalue1 + "+" + totalvalue2 + "=" + totalvalue )
   if (totalvalue) {
     document.querySelector("#showvalue").innerHTML = (totalvalue)
   }
+  return totalvalue
 }
 
 function cleartable () {
@@ -319,38 +327,65 @@ function cleartable () {
   document.getElementById("card4").style.display = "none";
   document.getElementById("card5").style.display = "none";
   document.getElementById("hit").style.display = "block";
+  document.getElementById("stick").style.display = "block";
+  hitexecuted = false;
+  hitcomplete = false;
+  oneexecuted = false;
+  twoexecuted = false;
+  threeexecuted = false;
+  playerlost = false;
 }
 
   startgame();
 
+  
+  window.setInterval (function checkwin () {
+  if (!playerlost) {
+  if (totalvalue >= 22) {
+    alert("you Loose!")
+    document.getElementById("hit").style.display = "none";
+    document.getElementById("stick").style.display = "none";
+    playerlost = true;
+  }}
+},1000)
+
   function hit () {
-    if (totalvalue = fourcardvalue) {
-      totalvalue = (totalvalue+totalvalue5);
-      fivecardvalue = totalvalue;
-      console.log("you now have " + totalvalue)
-      document.getElementById("card5").style.display = "flex";
+
+    if (!oneexecuted) {
+      totalvalue === twocardvalue 
+      totalvalue = (twocardvalue + totalvalue3);
+      threecardvalue = totalvalue;
+      console.log("1you now have " + totalvalue)
+      document.getElementById("card3").style.display = "flex";
       document.querySelector("#showvalue").innerHTML = (totalvalue)
-    }
-    //console.log("Hit"+ "+" + totalvalue3)
-    else if (totalvalue = threecardvalue) {
-      totalvalue = (totalvalue+totalvalue4);
+      oneexecuted = true;
+      hitexecuted = true;
+      return totalvalue, oneexecuted;
+      }
+    
+
+    if (!twoexecuted) {
+    if (totalvalue === threecardvalue) {
+      totalvalue = (threecardvalue+totalvalue4);
       fourcardvalue = totalvalue;
-      console.log("you now have " + totalvalue)
+      console.log("2you now have " + totalvalue)
       document.getElementById("card4").style.display = "flex";
       document.querySelector("#showvalue").innerHTML = (totalvalue)
-    }
-    else if (totalvalue = (totalvalue1+totalvalue2)) {
-    totalvalue = (totalvalue+totalvalue3);
-    threecardvalue = totalvalue;
-    console.log("you now have " + totalvalue)
-    document.getElementById("card3").style.display = "flex";
-    document.querySelector("#showvalue").innerHTML = (totalvalue)
-    }
-    if (totalvalue >= 22) {
-      alert("you Loose!")
-      document.getElementById("hit").style.display = "none";
-    }
-    return totalvalue
+      twoexecuted = true;
+      return totalvalue, twoexecuted;
+      }}
+    
+    if (!threeexecuted) {
+    if (totalvalue === fourcardvalue) {
+      totalvalue = (fourcardvalue+totalvalue5);
+      fivecardvalue = totalvalue;
+      console.log("3you now have " + totalvalue)
+      document.getElementById("card5").style.display = "flex";
+      document.querySelector("#showvalue").innerHTML = (totalvalue)
+      threeexecuted = true;
+      return totalvalue, threeexecuted;
+      }}
+    //console.log("Hit"+ "+" + totalvalue3)
   }
 
   function stick () {
@@ -359,18 +394,18 @@ function cleartable () {
     else if (dealerscore === 9,10,12,14) {dealerscore = (dealerscore*1.5)}
     else if (dealerscore === 11) {dealerscore = (dealerscore + 7)}
     
-    if (totalvalue < 21) {alert('Bust!')}
+    if (totalvalue > 21) {alert('Bust!')}
     else if (!(dealerscore < 21)) {
       alert('Dealer is bust you win!' + dealerscore);
     }
-    else if (totalvalue < 21) {alert('Bust!')}
-    if (totalvalue > dealerscore) {
+
+    if (totalvalue > dealerscore & totalvalue < 22) {
       alert("you got " + totalvalue + "! Dealer got: " + dealerscore + " you win :)")
       }
     else if (totalvalue === dealerscore) {
       alert("Draw!")
     }
-    else if (totalvalue < dealerscore) {
+    else if (!(totalvalue < 22)) {
       alert("you got " + totalvalue + "! Dealer got: " + dealerscore + " you loose :(")
       }
 }
